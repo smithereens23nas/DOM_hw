@@ -11,12 +11,12 @@
   transition: all 500ms ease;
 }
 
-
 .gallery-container {
   overflow: hidden;
   position: relative;
   width: 1000px;
   margin: 0 auto;
+  /* outline: red solid 2px; */
 }
 
 .gallery__item {

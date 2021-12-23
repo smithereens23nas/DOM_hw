@@ -11,8 +11,6 @@ out this gallery.
 
 */
 
-
-
 /*
 
 Step 1:
@@ -23,11 +21,10 @@ your 'js-gallery'.
 Hint: you can call .querySelector on a node you've already retrieved from the DOM.
 
 */
-
-
+const grabGallery = document.querySelector(".js-gallery");
+const grabItem = document.querySelectorAll(".js-gallery-item");
 
 /*
-
 Step 2:
 Transitioning our gallery from one slide to the next works like this:
 We need to know the width of every slide (they're all the same). We
@@ -44,7 +41,10 @@ To get the width, try .getBoundingClientRect() or .offsetWidth.
 
 */
 
-
+let slideCount = grabItem.length;
+let grabWidth = grabGallery.getBoundingClientRect();
+let slideWidth = grabWidth.width;
+// console.log(slideWidth)
 
 /*
 
@@ -67,7 +67,26 @@ Create a function called transitionSlide that, for now, just
 
 */
 
+let currentSlide = 1;
 
+function transitionSlide() {
+  let timer = setInterval(() => {
+    console.log("Called");
+
+    if (currentSlide < slideCount) {
+      grabGallery.style.transform = `translateX(-${
+        currentSlide * slideWidth
+      }px)`;
+
+      currentSlide++;
+      console.log(currentSlide);
+    } else {
+      currentSlide = 1;
+      grabGallery.style.transform = `translateX(0)`;
+    }
+  }, 5000);
+}
+transitionSlide();
 
 /*
 
